@@ -1,19 +1,10 @@
+import { q, qs } from './events/helpers.js';
+import { CONTAINER_SELECTOR } from './common/constants.js';
 document.addEventListener('DOMContentLoaded', (e) => {
   console.log('hello');
-  const fileInput = document.querySelector('#fileInput');
-  const imagePreview = document.getElementById('imagePreview');
-  fileInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onload = function (e) {
-        imagePreview.src = e.target.result; // Set as the image source
-        imagePreview.style.display = 'block'; // Make the image visible
-      };
-
-      // Read the file as a Data URL
-      reader.readAsDataURL(file);
-    }
-  });
+  const container = q(CONTAINER_SELECTOR);
+  const renderButton = function () {
+    return '<button>hello</button>';
+  };
+  container.innerHTML = renderButton();
 });
