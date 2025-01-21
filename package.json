@@ -1,0 +1,16 @@
+{
+  "name": "giphy-app",
+  "version": "1.0.0",
+  "description": "Giphy app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^9.18.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}

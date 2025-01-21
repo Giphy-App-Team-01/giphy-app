@@ -1,0 +1,12 @@
+### Node ###
+# Logs
+logs
+*.log
+npm-debug.log*
+.pnpm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Optional eslint cache
+.eslintcache
