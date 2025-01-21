@@ -3,22 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bangers:wght@600&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./styles/style.css" />
     <title>Giphy App</title>
   </head>
   <body>
     <div id="app">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="#" id="home-link" class="nav-link" data-page="trending"
+            >GIPHY APP</a
+          >
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search for GIFs..."
+          />
+          <button id="search-btn">Search</button>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a class="nav-link" href="#" data-page="trending">Trending</a>
+          </li>
+          <li><a class="nav-link" href="#" data-page="about">About</a></li>
+          <li>
+            <a class="nav-link" href="#" data-page="favorites">Favorites</a>
+          </li>
+          <li>
+            <a class="nav-link" href="#" data-page="my-uploads">My Uploads</a>
+          </li>
+        </ul>
+        <button class="nav-link" id="upload-btn" data-page="upload-gif">
+          Upload GIF
+        </button>
+      </nav>
       <div id="container">
         <!-- start placeholders -->
         <!-- end placeholders -->
       </div>
-      <footer>Giphy App 2025.</footer>
+      <footer>Copyright 2025 Telerik Academy. All rights reserved.</footer>
     </div>
 
     <script src="./src/index.js" type="module"></script>
