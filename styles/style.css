@@ -1,5 +1,122 @@
 :root {
-  --primary-color: #ff0000;
-  --primary-font: 'Bangers', cursive;
-  --primary-border-radius: 5px;
+  --primary-color: #ff4081;
+  --secondary-color: #e91e63;
+  --primary-border-radius: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121212;
+  color: #fff;
+}
+
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: var(--primary-border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.logo a {
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo a:hover {
+  color: var(--primary-color);
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-bar input {
+  width: 300px;
+  padding: 10px;
+  border: none;
+  border-radius: var(--primary-border-radius);
+  outline: none;
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+}
+
+.search-bar button {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--primary-border-radius);
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.search-bar button:hover {
+  background-color: var(--secondary-color);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+
+#upload-btn {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--primary-border-radius);
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#upload-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: #aaa;
+  padding: 20px 0;
 }
