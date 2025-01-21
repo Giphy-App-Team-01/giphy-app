@@ -6,5 +6,5 @@ export const UPLOAD_GIF = 'upload-gif';
 export const CONTAINER_SELECTOR = '#container';
 
 export const FULL_HEART = '❤';
-
 export const EMPTY_HEART = '♡';
+export const LINK = '🔗';
