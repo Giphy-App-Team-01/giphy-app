@@ -1,19 +1,12 @@
-document.addEventListener('DOMContentLoaded', (e) => {
-  console.log('hello');
-  const fileInput = document.querySelector('#fileInput');
-  const imagePreview = document.getElementById('imagePreview');
-  fileInput.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
+import { TRENDING } from './common/constants.js';
+import { loadPage } from './events/navigation-events.js';
 
-      reader.onload = function (e) {
-        imagePreview.src = e.target.result; // Set as the image source
-        imagePreview.style.display = 'block'; // Make the image visible
-      };
+document.addEventListener('DOMContentLoaded', () => {
+  loadPage(TRENDING);
 
-      // Read the file as a Data URL
-      reader.readAsDataURL(file);
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('nav-link')) {
+      loadPage(e.target.getAttribute('data-page'));
     }
   });
 });
