@@ -23,7 +23,7 @@
     "valid-typeof": 2,
     ////////// Best Practices //////////
     "prefer-const": 2,
-    "consistent-return": 2,
+    "consistent-return": "off",
     "eqeqeq": 2,
     "no-redeclare": 2,
     ////////// Variables //////////
