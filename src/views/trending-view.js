@@ -1,4 +1,4 @@
-import { EMPTY_HEART, LINK } from '../common/constants.js';
+import { EMPTY_HEART_ICON, LINK_ICON } from '../common/constants.js';
 
 export const toTrendingView = (gifsResponse) => {
   let gifs = [];
@@ -18,18 +18,18 @@ export const toTrendingView = (gifsResponse) => {
   <h2>Trending GIFs</h2>
   <div class="gif-grid">
     ${gifs
-    .map(
-      (gif) => `
+      .map(
+        (gif) => `
           <div class="gif-item" id="gif-${gif.id}">
             <img src="${gif.images.fixed_height.url}" alt="${gif.title}">
             <div class="gif-overlay">
-              <button class="fav-btn">${EMPTY_HEART}</button>
-              <button class="copy-btn">${LINK}</button>
+              <button class="fav-btn">${EMPTY_HEART_ICON}</button>
+              <button class="copy-btn">${LINK_ICON}</button>
             </div>
           </div>
-        `,
-    )
-    .join('')}
+        `
+      )
+      .join('')}
   </div>
 `;
 };
