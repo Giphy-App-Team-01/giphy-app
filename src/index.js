@@ -1,10 +1,14 @@
-import { q, qs } from './events/helpers.js';
-import { CONTAINER_SELECTOR } from './common/constants.js';
-document.addEventListener('DOMContentLoaded', (e) => {
-  console.log('hello');
-  const container = q(CONTAINER_SELECTOR);
-  const renderButton = function () {
-    return '<button>hello</button>';
-  };
-  container.innerHTML = renderButton();
-});
+
+import { TRENDING } from './common/constants.js';
+import { loadPage } from './events/navigation-events.js';
+import { fetchGifById, fetchGifsByIds } from './requests/request-service.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadPage(TRENDING);
+
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('nav-link')) {
+      loadPage(e.target.getAttribute('data-page'));
+    }
+  });
+
