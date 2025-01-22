@@ -2,6 +2,8 @@ import { TRENDING } from './common/constants.js';
 import { q } from './events/helpers.js';
 import { loadPage } from './events/navigation-events.js';
 import { renderSearchGifs } from './events/search-events.js';
+import { toggleFavorite } from './events/favorites-events.js';
+
 import { fetchGifById, fetchGifsByIds } from './requests/request-service.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,6 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target.id.includes('search-btn')) {
       handleSearch();
     }
+
+    if (e.target.classList.contains('fav-btn')) {
+      const gifId = e.target.closest('.gif-item').id;
+      toggleFavorite(gifId, e.target);
+    }
+
+
   });
 
   document.addEventListener('keydown', (e) => {
