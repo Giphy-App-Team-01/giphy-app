@@ -7,6 +7,10 @@ import {
   LIMIT_GIFS,
 } from '../common/config.js';
 
+export const fetchSearch = async (value) => {
+  return await fetchData(`${SEARCH_ENDPOINT}?q=${value}&limit=${LIMIT_GIFS}&api_key=${API_KEY}`);
+};
+
 export const fetchTrending = async () => {
   return fetchData(
     `${TRENDING_ENDPOINT}?api_key=${API_KEY}&limit=${LIMIT_GIFS}`
