@@ -121,105 +121,104 @@ footer {
   padding: 20px 0;
 }
 
+#container {
+  margin-top: 40px;
+}
 
+.content-section {
+  display: none;
+  padding: 40px;
+  text-align: center;
+}
 
+.content-section.active {
+  display: block;
+}
 
-  /* Content Container */
-  #container {
-    margin-top: 40px;
-  }
-  
-  /* Trending Section */
-  .content-section {
-    display: none;
-    padding: 40px;
-    text-align: center;
-  }
-  
-  .content-section.active {
-    display: block;
-  }
-  
-  h2 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    font-size: 32px;
-    text-align: center;
-  }
-  
-  /* GIF Grid - Подреждане в адаптивна мрежа */
-  .gif-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    justify-content: center;
-  }
-  
-  /* GIF Item */
-  .gif-item {
-    position: relative;
-    border-radius: var(--primary-border-radius);
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-    transition: transform 0.3s ease-in-out;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .gif-item:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Правилно мащабиране на GIF изображенията */
-  .gif-item img {
-    width: 100%;
-    height: 200px; /* Фиксирана височина */
-    object-fit: cover; /* Гарантира, че изображението ще запълни контейнера */
-    display: block;
-    border-radius: var(--primary-border-radius);
-  }
-  
-  /* Overlay за бутоните */
-  .gif-overlay {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 10px;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-  /* Показване на бутоните при ховър */
-  .gif-item:hover .gif-overlay {
-    opacity: 1;
-  }
-  
-  /* Общи стилове за бутоните */
-  .fav-btn, .copy-btn {
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
-  }
-  
-  /* Ефекти при ховър на бутоните */
-  .fav-btn:hover, .copy-btn:hover {
-    background: rgba(255, 255, 255, 0.9);
-    color: #000;
-  }
-  
-  /* Footer */
-  footer {
-    margin-top: 40px;
-    text-align: center;
-    font-size: 18px;
-    color: #aaa;
-    padding: 20px 0;
-  }
-  
+h2 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-size: 32px;
+  text-align: center;
+}
+
+.gif-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.gif-grid:has(.gif-item:only-child) {
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.gif-grid:has(.gif-item:nth-child(2):last-child) {
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.gif-item {
+  position: relative;
+  border-radius: var(--primary-border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+}
+
+.gif-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--primary-border-radius);
+}
+
+.gif-overlay {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gif-item:hover .gif-overlay {
+  opacity: 5;
+}
+
+.fav-btn,
+.copy-btn {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.fav-btn:hover,
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: #aaa;
+  padding: 20px 0;
+}
