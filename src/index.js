@@ -1,3 +1,4 @@
+
 import { TRENDING } from './common/constants.js';
 import { loadPage } from './events/navigation-events.js';
 import { fetchGifById, fetchGifsByIds } from './requests/request-service.js';
@@ -11,6 +12,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // fetchGifById('26his8ERHOSxKuWw8');
-  // fetchGifsByIds(['FVOU6vzPq3XtNfgA66', 'PnVVpkwpaAO02qGCc9']);
-});
