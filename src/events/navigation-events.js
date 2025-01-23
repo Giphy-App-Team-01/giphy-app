@@ -68,14 +68,13 @@ const renderUploadedGifsView = () => {
 
 const renderFavorites = async () => {
   const favorites = getFavorites();
-  console.log(favorites);
-
-  if (favorites.length === 0)
+  if (favorites.length === 0) {
     q(CONTAINER_SELECTOR).innerHTML = toFavoritesView([]);
-  else {
+  } else {
     const data = await fetchGifsByIds(favorites);
     q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(data);
   }
+  updateFavoriteButtons();
 };
 
 export const renderSingleGifView = async (id = null) => {
