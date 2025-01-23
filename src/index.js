@@ -1,14 +1,10 @@
-import { TRENDING } from './common/constants.js';
+import { FAVORITES, TRENDING } from './common/constants.js';
 import { q } from './events/helpers.js';
 import { loadPage, renderSingleGifView } from './events/navigation-events.js';
 import { renderSearchGifs } from './events/search-events.js';
 import { toggleFavorite } from './events/favorites-events.js';
 import { copyToClipboard } from './events/single-gif-events.js';
 import { renderMessageBar } from './components/message-bar.js';
-import {
-  fetchRandomId,
-  fetchGifByResponseId,
-} from './requests/request-service.js';
 import { handleGifUpload } from './events/upload-gif-events.js';
 import { assignRandomId } from './events/user-events.js';
 
@@ -39,6 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // const gifId = e.target.closest('.gif-item').id;
       const gifId = e.target.getAttribute('data-gif-id');
       toggleFavorite(gifId, e.target);
+
+      const favoritesLink = q('a.nav-link.active[data-page="favorites"]');
+
+      if (favoritesLink) {
+        loadPage(FAVORITES);
+      }
     }
 
     // Single view Gif
