@@ -231,6 +231,17 @@ footer {
   padding: 20px 0;
 }
 
+/* ---- Components ---- */
+
+/* Info Paragraph */
+
+.info-paragraph {
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  margin-top: 50px;
+}
+
 /* Message Bar */
 
 .message-bar {

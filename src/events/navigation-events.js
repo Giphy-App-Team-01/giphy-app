@@ -13,9 +13,12 @@ import {
   fetchTrending,
   fetchGifById,
 } from '../requests/request-service.js';
-import { updateFavoriteButtons } from './favorites-events.js';
+import { updateFavoriteButtons, getFavorites } from './favorites-events.js';
 import { toFavoritesView } from '../views/favorites-view.js';
 import { toSingleGifView } from '../views/gif-view.js';
+import { toUploadedGifsView } from '../views/uploaded-gifs-view.js';
+import { toUploadGifView } from '../views/upload-view.js';
+import { toAboutUsView } from '../views/about-view.js';
 
 export const loadPage = (page = '') => {
   switch (page) {
@@ -25,9 +28,11 @@ export const loadPage = (page = '') => {
 
     case ABOUT:
       setActiveNav(ABOUT);
+      return renderAboutUsView();
 
     case MY_UPLOADS:
       setActiveNav(MY_UPLOADS);
+      return renderUploadedGifsView();
 
     case FAVORITES:
       setActiveNav(FAVORITES);
@@ -35,6 +40,7 @@ export const loadPage = (page = '') => {
 
     case UPLOAD_GIF:
       setActiveNav(UPLOAD_GIF);
+      return renderUploadGif();
 
     default:
       return null;
@@ -52,16 +58,31 @@ const renderTrending = async () => {
   }
 };
 
-const renderFavorites = async () => {
-  const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  const ids = storedFavorites.map((id) => id.replace('gif-', ''));
+const renderUploadGif = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadGifView();
+};
 
-  const data = await fetchGifsByIds(ids);
-  q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(data);
+const renderUploadedGifsView = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toUploadedGifsView();
+};
+
+const renderFavorites = async () => {
+  const favorites = getFavorites();
+  console.log(favorites);
+
+  if (favorites.length === 0)
+    q(CONTAINER_SELECTOR).innerHTML = toFavoritesView([]);
+  else {
+    const data = await fetchGifsByIds(favorites);
+    q(CONTAINER_SELECTOR).innerHTML = toFavoritesView(data);
+  }
 };
 
 export const renderSingleGifView = async (id = null) => {
-  // fetch gif by ID from request service
   const gifObject = await fetchGifById(id);
   q(CONTAINER_SELECTOR).innerHTML = toSingleGifView(gifObject);
+};
+
+const renderAboutUsView = () => {
+  q(CONTAINER_SELECTOR).innerHTML = toAboutUsView();
 };
