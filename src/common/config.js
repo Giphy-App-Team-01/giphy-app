@@ -1,7 +1,8 @@
 // Giphy API
-export const API_KEY = 'GlB2vkGSxIRpsa7WrQIkIxXXmLMVL8tC';
+export const API_KEY = 'eMRSqF3fqU2L8eZv6xKx02GK0y7Rp9Gi';
 // bmCd7DLcF74fAnQnnVpmOJrDCy7tkPv3
 // GlB2vkGSxIRpsa7WrQIkIxXXmLMVL8tC
+// eMRSqF3fqU2L8eZv6xKx02GK0y7Rp9Gi
 
 // Usage: https://api.giphy.com/v1/gifs/trending?api_key={API_KEY}&limit={limit}
 export const TRENDING_ENDPOINT = 'https://api.giphy.com/v1/gifs/trending';

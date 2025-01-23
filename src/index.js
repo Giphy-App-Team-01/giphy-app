@@ -1,20 +1,21 @@
 import { TRENDING } from './common/constants.js';
-import { q, getGifId } from './events/helpers.js';
+import { q } from './events/helpers.js';
 import { loadPage, renderSingleGifView } from './events/navigation-events.js';
 import { renderSearchGifs } from './events/search-events.js';
 import { toggleFavorite } from './events/favorites-events.js';
 import { copyToClipboard } from './events/single-gif-events.js';
 import { renderMessageBar } from './components/message-bar.js';
-import { renderLoader, removeLoader } from './components/loader.js';
-import { fetchRandomId, uploadGif } from './requests/request-service.js';
+import {
+  fetchRandomId,
+  fetchGifByResponseId,
+} from './requests/request-service.js';
+import { handleGifUpload } from './events/upload-gif-events.js';
+import { assignRandomId } from './events/user-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   loadPage(TRENDING);
+  assignRandomId();
 
-  (async () => {
-    const randomId = await fetchRandomId();
-    console.log(randomId);
-  })();
   const handleSearch = () => {
     const inputValue = q('#search-input').value.trim();
     if (inputValue) {
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Single view Gif
     if (e.target.classList.contains('gif-item-img')) {
       const gifId = e.target.parentElement.id;
+      console.log(gifId);
       renderSingleGifView(gifId);
     }
 
@@ -57,19 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.addEventListener('input', (e) => {
+  document.addEventListener('input', async (e) => {
     if (e.target.classList.contains('upload-gif-input')) {
-      try {
-        uploadGif(e.target.files[0]).then((data) => {
-          renderMessageBar(
-            'Successfully uploaded, visit your uploaded gifs.',
-            'success'
-          );
-        });
-      } catch (err) {
-        renderMessageBar('Error reading the file, try again.', 'error');
-        console.log(err);
-      }
+      await handleGifUpload(e.target.files[0]);
     }
   });
 

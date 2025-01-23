@@ -16,6 +16,12 @@ export const fetchSearch = async (value) => {
   );
 };
 
+export const fetchGifByResponseId = async (randomId) => {
+  return fetchData(
+    `${GIF_BY_ID_ENDPOINT}?api_key=${API_KEY}&random_id=${randomId}`
+  );
+};
+
 export const fetchTrending = async () => {
   return fetchData(
     `${TRENDING_ENDPOINT}?api_key=${API_KEY}&limit=${LIMIT_GIFS}`
@@ -34,7 +40,10 @@ export const fetchGifsByIds = async (ids) => {
 };
 
 export const fetchRandomId = async () => {
-  return fetchData(`https://api.giphy.com/v1/randomid?api_key=${API_KEY}`);
+  const response = await fetchData(
+    `https://api.giphy.com/v1/randomid?api_key=${API_KEY}`
+  );
+  return response.data.random_id;
 };
 
 export const uploadGif = async (file) => {
@@ -42,8 +51,8 @@ export const uploadGif = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('api_key', API_KEY);
-    renderLoader();
-    const response = await fetch(`https://upload.giphy.com/v1/gifs`, {
+    // renderLoader();
+    const response = await fetch(`${UPLOAD_GIF_ENDPOINT}`, {
       method: 'POST',
       body: formData,
     });
@@ -51,7 +60,7 @@ export const uploadGif = async (file) => {
       throw new Error('Failed to fetch data');
     }
     const data = await response.json();
-    removeLoader();
+    // removeLoader();
     return data;
   } catch (err) {
     renderMessageBar('Failed to upload gif, please try again.', 'error');
