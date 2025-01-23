@@ -1,5 +1,9 @@
 import { renderPageTitle } from '../components/page-title.js';
-import { renderInfoParagraph } from '../components/info-paragraph.js';
+
+/**
+ * Renders the upload GIF view.
+ * @return {string} The HTML markup for the upload GIF view.
+ */
 export const toUploadGifView = () => {
   return (
     renderPageTitle('Upload your own GIF') +

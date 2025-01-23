@@ -1,17 +1,22 @@
 /**
  * Shorthand for document.querySelector
  * @param {string} selector
- * @returns {Element}
+ * @return {Element}
  */
 export const q = (selector) => document.querySelector(selector);
 
 /**
  * Shorthand for document.querySelectorAll
  * @param {string} selector
- * @returns {NodeLists<Element>}
+ * @return {NodeLists<Element>}
  */
 export const qs = (selector) => document.querySelectorAll(selector);
 
+/**
+ * Sets the active navigation link based on the provided page.
+ *
+ * @param {string} page - The page identifier to set as active.
+ */
 export const setActiveNav = (page) => {
   const navs = qs('a.nav-link');
 
@@ -22,6 +27,10 @@ export const setActiveNav = (page) => {
   );
 };
 
+/**
+ * Extracts the GIF ID from a given GIF string.
+ * @returns {string} The extracted GIF ID.
+ */
 export const getGifId = (gifString) => {
   return gifString.split('-')[1];
 };

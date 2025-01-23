@@ -1,6 +1,12 @@
 import { EMPTY_HEART_ICON, FULL_HEART_ICON } from '../common/constants.js';
 import { renderMessageBar } from '../components/message-bar.js';
 
+/**
+ * Toggles the favorite status of a GIF.
+ *
+ * @param {string} gifId - The ID of the GIF to toggle.
+ * @param {HTMLElement} buttonElement - The button element that was clicked to toggle the favorite status.
+ */
 export const toggleFavorite = (gifId, buttonElement) => {
   let favorites = getFavorites();
   if (favorites.includes(gifId)) {
@@ -16,6 +22,9 @@ export const toggleFavorite = (gifId, buttonElement) => {
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
 
+/**
+ * Updates the favorite buttons for each GIF item on the page.
+ */
 export const updateFavoriteButtons = () => {
   const favorites = getFavorites();
 
@@ -31,6 +40,12 @@ export const updateFavoriteButtons = () => {
   });
 };
 
+/**
+ * Renders the favorite status icon based on whether the given ID is in the favorites list.
+ *
+ * @param {string} id - The ID of the item to check.
+ * @returns {string} - The HTML string for the full heart icon if the item is a favorite, otherwise the empty heart icon.
+ */
 export const renderFavoriteStatus = (id) => {
   const favorites = getFavorites();
   if (favorites.includes(id)) {
@@ -40,6 +55,11 @@ export const renderFavoriteStatus = (id) => {
   }
 };
 
+/**
+ * Retrieves the list of favorite items from local storage.
+ *
+ * @returns {Array} An array of favorite items. If no favorites are found, returns an empty array.
+ */
 export const getFavorites = () => {
   return JSON.parse(localStorage.getItem('favorites')) || [];
 };

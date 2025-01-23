@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
   loadPage(TRENDING);
   assignRandomId();
 
+  /**
+   * Handles the search functionality by retrieving the input value,
+   * trimming any leading or trailing whitespace, and if the input
+   * value is not empty, it calls the renderSearchGifs function with
+   * the input value as an argument.
+   */
   const handleSearch = () => {
     const inputValue = q('#search-input').value.trim();
     if (inputValue) {
