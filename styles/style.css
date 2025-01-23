@@ -3,6 +3,8 @@
   --secondary-color: #e91e63;
   --primary-border-radius: 10px;
   --primary-font: sans-serif;
+  --message-success-color: #4caf50;
+  --message-error-color: #f44336;
 }
 
 * {
@@ -15,6 +17,11 @@ body {
   background-color: #121212;
   color: #fff;
   font-family: var(--primary-font);
+}
+.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
 
 #app {
@@ -173,6 +180,7 @@ h2 {
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
   transition: transform 0.3s ease-in-out;
   width: 100%;
+  cursor: pointer;
 }
 
 .gif-item img {
@@ -221,4 +229,74 @@ footer {
   font-size: 18px;
   color: #aaa;
   padding: 20px 0;
+}
+
+/* Message Bar */
+
+.message-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 50px;
+  text-align: center;
+  padding: 15px 0;
+  color: #fff;
+  z-index: 9;
+}
+.message-bar.success {
+  background-color: var(--message-success-color);
+}
+.message-bar.error {
+  background-color: var(--message-error-color);
+}
+
+/* Single Gif View */
+
+.single-gif-view {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  gap: 30px;
+}
+.main-image__single-gif-view img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--primary-border-radius);
+}
+.title__single-gif-view {
+  font-size: 2rem;
+  line-height: 1.2em;
+  margin-bottom: 20px;
+}
+.container-gif-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.gif-details__single-gif-view {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 10px;
+}
+.gif-details__single-gif-view span {
+  font-size: 1.2rem;
+  line-height: 1.2em;
+}
+span.title__gif-details {
+  font-weight: bold;
+  color: #777;
+}
+.controls__single-gif-view {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 15px;
+  justify-content: flex-start;
+}
+.controls__single-gif-view div {
+  cursor: pointer;
+  width: fit-content;
+  font-size: 1.2rem;
+  line-height: 1.2em;
 }

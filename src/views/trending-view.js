@@ -20,11 +20,11 @@ export const toTrendingView = (gifsResponse) => {
     ${gifs
       .map(
         (gif) => `
-          <div class="gif-item" id="gif-${gif.id}">
-            <img src="${gif.images.fixed_height.url}" alt="${gif.title}">
+          <div class="gif-item" id="${gif.id}">
+            <img class="gif-item-img" src="${gif.images.fixed_height.url}" alt="${gif.title}">
             <div class="gif-overlay">
-              <button class="fav-btn">${EMPTY_HEART_ICON}</button>
-              <button class="copy-btn">${LINK_ICON}</button>
+              <button class="fav-btn" data-gif-id="${gif.id}">${EMPTY_HEART_ICON}</button>
+              <button class="copy-btn" data-gif-url="${gif.bitly_gif_url}">${LINK_ICON}</button>
             </div>
           </div>
         `

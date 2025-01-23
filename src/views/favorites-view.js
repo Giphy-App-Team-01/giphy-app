@@ -21,7 +21,7 @@ export const toFavoritesView = (gifsResponse) => {
           .map(
             (gif) => `
               <div class="gif-item" id="gif-${gif.id}">
-                <img src="${gif.images.fixed_height.url}" alt="${gif.title}">
+                <img class="gif-item-img" src="${gif.images.fixed_height.url}" alt="${gif.title}">
                 <div class="gif-overlay">
                   <button class="fav-btn">${FULL_HEART_ICON}</button>
                   <button class="copy-btn">${LINK_ICON}</button>

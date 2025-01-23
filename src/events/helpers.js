@@ -21,3 +21,7 @@ export const setActiveNav = (page) => {
       : element.classList.remove('active')
   );
 };
+
+export const getGifId = (gifString) => {
+  return gifString.split('-')[1];
+};

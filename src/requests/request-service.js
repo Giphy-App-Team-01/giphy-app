@@ -6,9 +6,12 @@ import {
   SEARCH_ENDPOINT,
   LIMIT_GIFS,
 } from '../common/config.js';
+import { renderMessageBar } from '../components/message-bar.js';
 
 export const fetchSearch = async (value) => {
-  return await fetchData(`${SEARCH_ENDPOINT}?q=${value}&limit=${LIMIT_GIFS}&api_key=${API_KEY}`);
+  return await fetchData(
+    `${SEARCH_ENDPOINT}?q=${value}&limit=${LIMIT_GIFS}&api_key=${API_KEY}`
+  );
 };
 
 export const fetchTrending = async () => {
@@ -18,58 +21,18 @@ export const fetchTrending = async () => {
 };
 
 export const fetchGifById = async (id) => {
-  try {
-    const response = await fetch(
-      `${GIF_BY_ID_ENDPOINT}${id}?api_key=${API_KEY}`
-    );
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch GIF by ID');
-    }
-    const data = await response.json();
-
-    return data;
-  } catch (error) {
-    // We can also show here our message bar to the user with some meaningful message
-    console.error('Error fetching GIF by ID:', error);
-  }
+  return fetchData(`${GIF_BY_ID_ENDPOINT}${id}?api_key=${API_KEY}`);
 };
 
 export const fetchGifsByIds = async (ids) => {
   const idsToString = ids.join(',');
-  try {
-    const response = await fetch(
-      `${GIFS_BY_IDs_ENDPOINT}?ids=${idsToString}&api_key=${API_KEY}`
-    );
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch GIFs by IDs');
-    }
-    const data = await response.json();
-
-    return data;
-  } catch (error) {
-    // We can also show here our message bar to the user with some meaningful message
-    console.error('Error fetching GIFs by IDs:', error);
-  }
+  return fetchData(
+    `${GIFS_BY_IDs_ENDPOINT}?ids=${idsToString}&api_key=${API_KEY}`
+  );
 };
 
-export const fetchGifsByQuery = async (query) => {
-  try {
-    const response = await fetch(
-      `${SEARCH_ENDPOINT}?q=${query}&limit=${LIMIT_GIFS}&api_key=${API_KEY}`
-    );
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch GIFs by query');
-    }
-    const data = await response.json();
-
-    return data;
-  } catch (error) {
-    // We can also show here our message bar to the user with some meaningful message
-    console.error('Error fetching GIFs by query:', error);
-  }
+export const fetchRandomId = async () => {
+  return fetchData(`https://api.giphy.com/v1/randomid?api_key=${API_KEY}`);
 };
 
 const fetchData = async (url) => {
@@ -82,7 +45,7 @@ const fetchData = async (url) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    // We can also show here our message bar to the user with some meaningful message
+    renderMessageBar('Failed to fetch data, please try again.', 'error');
     console.error('Error fetching data:', error);
   }
 };
