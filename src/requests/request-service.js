@@ -8,6 +8,7 @@ import {
   LIMIT_GIFS,
 } from '../common/config.js';
 import { renderMessageBar } from '../components/message-bar.js';
+import { renderLoader, removeLoader } from '../components/loader.js';
 
 export const fetchSearch = async (value) => {
   return await fetchData(
@@ -41,6 +42,7 @@ export const uploadGif = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('api_key', API_KEY);
+    renderLoader();
     const response = await fetch(`https://upload.giphy.com/v1/gifs`, {
       method: 'POST',
       body: formData,
@@ -49,6 +51,7 @@ export const uploadGif = async (file) => {
       throw new Error('Failed to fetch data');
     }
     const data = await response.json();
+    removeLoader();
     return data;
   } catch (err) {
     renderMessageBar('Failed to upload gif, please try again.', 'error');

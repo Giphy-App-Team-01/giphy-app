@@ -5,7 +5,7 @@ import { renderSearchGifs } from './events/search-events.js';
 import { toggleFavorite } from './events/favorites-events.js';
 import { copyToClipboard } from './events/single-gif-events.js';
 import { renderMessageBar } from './components/message-bar.js';
-import { renderLoader } from './components/loader.js';
+import { renderLoader, removeLoader } from './components/loader.js';
 import { fetchRandomId, uploadGif } from './requests/request-service.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -65,8 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'Successfully uploaded, visit your uploaded gifs.',
             'success'
           );
-          renderLoader();
-          console.log(data);
         });
       } catch (err) {
         renderMessageBar('Error reading the file, try again.', 'error');
