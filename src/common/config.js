@@ -1,5 +1,5 @@
 // Giphy API
-export const API_KEY = 'eMRSqF3fqU2L8eZv6xKx02GK0y7Rp9Gi';
+export const API_KEY = 'bmCd7DLcF74fAnQnnVpmOJrDCy7tkPv3';
 // bmCd7DLcF74fAnQnnVpmOJrDCy7tkPv3
 // GlB2vkGSxIRpsa7WrQIkIxXXmLMVL8tC
 // eMRSqF3fqU2L8eZv6xKx02GK0y7Rp9Gi

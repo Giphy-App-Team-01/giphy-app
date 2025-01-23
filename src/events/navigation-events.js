@@ -19,31 +19,32 @@ import { toSingleGifView } from '../views/gif-view.js';
 import { toUploadedGifsView } from '../views/uploaded-gifs-view.js';
 import { toUploadGifView } from '../views/upload-view.js';
 import { toAboutUsView } from '../views/about-view.js';
+import { getIdsFromUploads } from './user-events.js';
 
 export const loadPage = (page = '') => {
   switch (page) {
-    case TRENDING:
-      setActiveNav(TRENDING);
-      return renderTrending();
+  case TRENDING:
+    setActiveNav(TRENDING);
+    return renderTrending();
 
-    case ABOUT:
-      setActiveNav(ABOUT);
-      return renderAboutUsView();
+  case ABOUT:
+    setActiveNav(ABOUT);
+    return renderAboutUsView();
 
-    case MY_UPLOADS:
-      setActiveNav(MY_UPLOADS);
-      return renderUploadedGifsView();
+  case MY_UPLOADS:
+    setActiveNav(MY_UPLOADS);
+    return renderUploadedGifsView();
 
-    case FAVORITES:
-      setActiveNav(FAVORITES);
-      return renderFavorites();
+  case FAVORITES:
+    setActiveNav(FAVORITES);
+    return renderFavorites();
 
-    case UPLOAD_GIF:
-      setActiveNav(UPLOAD_GIF);
-      return renderUploadGif();
+  case UPLOAD_GIF:
+    setActiveNav(UPLOAD_GIF);
+    return renderUploadGif();
 
-    default:
-      return null;
+  default:
+    return null;
   }
 };
 
@@ -62,8 +63,10 @@ const renderUploadGif = () => {
   q(CONTAINER_SELECTOR).innerHTML = toUploadGifView();
 };
 
-const renderUploadedGifsView = () => {
-  q(CONTAINER_SELECTOR).innerHTML = toUploadedGifsView();
+const renderUploadedGifsView = async () => {
+  const uploadedIds = getIdsFromUploads();
+  const data = await fetchGifsByIds(uploadedIds);
+  q(CONTAINER_SELECTOR).innerHTML = toUploadedGifsView(data);
 };
 
 const renderFavorites = async () => {

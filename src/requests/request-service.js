@@ -9,6 +9,7 @@ import {
 } from '../common/config.js';
 import { renderMessageBar } from '../components/message-bar.js';
 import { renderLoader, removeLoader } from '../components/loader.js';
+import { q } from '../events/helpers.js';
 
 export const fetchSearch = async (value) => {
   return await fetchData(
@@ -78,7 +79,12 @@ const fetchData = async (url) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    renderMessageBar('Failed to fetch data, please try again.', 'error');
-    console.error('Error fetching data:', error);
+
+    const uploadLink = q('a.nav-link.active[data-page="my-uploads"]');
+
+    if (!uploadLink) {
+      renderMessageBar('Failed to fetch data, please try again.', 'error');
+      console.error('Error fetching data:', error);
+    }
   }
 };
