@@ -18,6 +18,8 @@
     "arrow-parens": 0,
     "padded-blocks": 0,
     "no-empty": 2,
+    "comma-dangle":"off",
+    "operator-linebreak":"off",
     "no-irregular-whitespace": 2,
     "valid-jsdoc": 2,
     "valid-typeof": 2,
