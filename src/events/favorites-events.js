@@ -38,10 +38,6 @@ export const renderFavoriteStatus = (id) => {
   } else {
     return `${EMPTY_HEART_ICON}`;
   }
-  // if (favorites)
-  // get favorites from localStorage
-  // Check if the gif id exists
-  // render favorite status
 };
 
 export const getFavorites = () => {

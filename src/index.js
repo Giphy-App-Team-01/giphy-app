@@ -5,7 +5,8 @@ import { renderSearchGifs } from './events/search-events.js';
 import { toggleFavorite } from './events/favorites-events.js';
 import { copyToClipboard } from './events/single-gif-events.js';
 import { renderMessageBar } from './components/message-bar.js';
-import { fetchRandomId } from './requests/request-service.js';
+import { renderLoader } from './components/loader.js';
+import { fetchRandomId, uploadGif } from './requests/request-service.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   loadPage(TRENDING);
@@ -53,6 +54,24 @@ document.addEventListener('DOMContentLoaded', () => {
       const gifUrl = e.target.getAttribute('data-gif-url');
       copyToClipboard(gifUrl);
       renderMessageBar('Link copied to clipboard!', 'success');
+    }
+  });
+
+  document.addEventListener('input', (e) => {
+    if (e.target.classList.contains('upload-gif-input')) {
+      try {
+        uploadGif(e.target.files[0]).then((data) => {
+          renderMessageBar(
+            'Successfully uploaded, visit your uploaded gifs.',
+            'success'
+          );
+          renderLoader();
+          console.log(data);
+        });
+      } catch (err) {
+        renderMessageBar('Error reading the file, try again.', 'error');
+        console.log(err);
+      }
     }
   });
 

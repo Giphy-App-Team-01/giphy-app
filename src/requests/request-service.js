@@ -4,6 +4,7 @@ import {
   GIF_BY_ID_ENDPOINT,
   GIFS_BY_IDs_ENDPOINT,
   SEARCH_ENDPOINT,
+  UPLOAD_GIF_ENDPOINT,
   LIMIT_GIFS,
 } from '../common/config.js';
 import { renderMessageBar } from '../components/message-bar.js';
@@ -33,6 +34,26 @@ export const fetchGifsByIds = async (ids) => {
 
 export const fetchRandomId = async () => {
   return fetchData(`https://api.giphy.com/v1/randomid?api_key=${API_KEY}`);
+};
+
+export const uploadGif = async (file) => {
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('api_key', API_KEY);
+    const response = await fetch(`https://upload.giphy.com/v1/gifs`, {
+      method: 'POST',
+      body: formData,
+    });
+    if (!response.ok) {
+      throw new Error('Failed to fetch data');
+    }
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    renderMessageBar('Failed to upload gif, please try again.', 'error');
+    console.error('Error uploading gif:', err);
+  }
 };
 
 const fetchData = async (url) => {

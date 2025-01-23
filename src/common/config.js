@@ -14,4 +14,7 @@ export const GIF_BY_ID_ENDPOINT = 'https://api.giphy.com/v1/gifs/';
 
 // Usage: https://api.giphy.com/v1/gifs?ids=FVOU6vzPq3XtNfgA66,PnVVpkwpaAO02qGCc9&api_key={API_KEY}
 export const GIFS_BY_IDs_ENDPOINT = 'https://api.giphy.com/v1/gifs';
+
+// Usage: https://upload.giphy.com/v1/gifs?api_key={API_KEY}?file={file}
+export const UPLOAD_GIF_ENDPOINT = 'https://upload.giphy.com/v1/gifs';
 export const LIMIT_GIFS = 24;
