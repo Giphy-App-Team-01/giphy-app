@@ -26,7 +26,7 @@ export const assignIdFromUpload = (id) => {
 /**
  * Retrieves an array of upload IDs from local storage.
  *
- * @returns {Array} An array of upload IDs. If no upload IDs are found, returns an empty array.
+ * @return {Array} An array of upload IDs. If no upload IDs are found, returns an empty array.
  */
 export const getIdsFromUploads = () => {
   return JSON.parse(localStorage.getItem('uploadId')) || [];

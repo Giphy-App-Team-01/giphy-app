@@ -1,6 +1,7 @@
 import { simpleGifView } from './gif-view.js';
 import { renderPageTitle } from '../components/page-title.js';
 import { renderInfoParagraph } from '../components/info-paragraph.js';
+import { extractGifs } from '../events/helpers.js';
 
 
 /**
@@ -12,10 +13,7 @@ import { renderInfoParagraph } from '../components/info-paragraph.js';
  * @return {string} The HTML string for the search view.
  */
 export const toSearchView = (gifsResponse, searchTerm) => {
-  let gifs = [];
-  if (gifsResponse && Array.isArray(gifsResponse.data)) {
-    gifs = gifsResponse.data;
-  }
+  const gifs = extractGifs(gifsResponse);
 
   if (!Array.isArray(gifs) || gifs.length === 0) {
     return renderInfoParagraph(

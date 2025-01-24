@@ -1,6 +1,7 @@
 import { simpleGifView } from '../views/gif-view.js';
 import { renderInfoParagraph } from '../components/info-paragraph.js';
 import { renderPageTitle } from '../components/page-title.js';
+import { extractGifs } from '../events/helpers.js';
 
 /**
  * Generates the HTML content for the favorites view based on the provided GIFs response.
@@ -10,16 +11,13 @@ import { renderPageTitle } from '../components/page-title.js';
  * @return {string} The HTML content for the favorites view.
  */
 export const toFavoritesView = (gifsResponse) => {
-  let gifs = [];
-  if (gifsResponse && Array.isArray(gifsResponse.data)) {
-    gifs = gifsResponse.data;
-  }
+  const gifs = extractGifs(gifsResponse);
 
   if (!Array.isArray(gifs) || gifs.length === 0) {
     return (
       renderPageTitle('Your Favorite GIFs') +
       renderInfoParagraph(
-        'Oops! No favorites found. Add some fun to your collection! 😍',
+        'Oops! No favorites found. Add some fun to your collection! 😍'
       )
     );
   }
