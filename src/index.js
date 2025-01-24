@@ -6,11 +6,9 @@ import { toggleFavorite } from './events/favorites-events.js';
 import { handleCopyToClipboard } from './events/single-gif-events.js';
 import { renderMessageBar } from './components/message-bar.js';
 import { handleGifUpload } from './events/upload-gif-events.js';
-import { assignRandomId } from './events/user-events.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   loadPage(TRENDING);
-  assignRandomId();
 
   /**
    * Handles the search functionality by retrieving the input value,

@@ -3,7 +3,6 @@ import { renderLoader, removeLoader } from '../components/loader.js';
 import { renderMessageBar } from '../components/message-bar.js';
 import { assignIdFromUpload } from './user-events.js';
 
-
 /**
  * Handles the GIF upload process.
  *
@@ -22,4 +21,5 @@ export const handleGifUpload = async (file) => {
     'Successfully uploaded, visit your uploaded gifs.',
     'success'
   );
+  return;
 };

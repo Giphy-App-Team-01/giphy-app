@@ -47,4 +47,9 @@ export const extractGifs = (gifsResponse) => {
   return [];
 };
 
+/**
+ * Copies the provided text to the clipboard.
+ * @param {string} text
+ * @returns {Promise<void>}
+ */
 export const copyToClipboard = (text) => navigator.clipboard.writeText(text);

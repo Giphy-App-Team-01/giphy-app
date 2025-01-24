@@ -22,12 +22,6 @@ export const fetchSearch = async (value) => {
   );
 };
 
-export const fetchGifByResponseId = async (randomId) => {
-  return fetchData(
-    `${GIF_BY_ID_ENDPOINT}?api_key=${API_KEY}&random_id=${randomId}`
-  );
-};
-
 /**
  * Fetches trending GIFs from the Giphy API.
  *
@@ -62,13 +56,6 @@ export const fetchGifsByIds = async (ids) => {
   return fetchData(
     `${GIFS_BY_IDs_ENDPOINT}?ids=${idsToString}&api_key=${API_KEY}`
   );
-};
-
-export const fetchRandomId = async () => {
-  const response = await fetchData(
-    `https://api.giphy.com/v1/randomid?api_key=${API_KEY}`
-  );
-  return response.data.random_id;
 };
 
 /**
