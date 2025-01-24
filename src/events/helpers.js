@@ -27,9 +27,12 @@ export const setActiveNav = (page) => {
   );
 };
 
+
 /**
  * Extracts the GIF ID from a given GIF string.
- * @returns {string} The extracted GIF ID.
+ *
+ * @param {string} gifString - The string containing the GIF ID.
+ * @return {string} The extracted GIF ID.
  */
 export const getGifId = (gifString) => {
   return gifString.split('-')[1];
@@ -50,6 +53,23 @@ export const extractGifs = (gifsResponse) => {
 /**
  * Copies the provided text to the clipboard.
  * @param {string} text
- * @returns {Promise<void>}
+ * @return {Promise<void>}
  */
 export const copyToClipboard = (text) => navigator.clipboard.writeText(text);
+
+
+/**
+ * Debounces a function by delaying its execution until after a specified
+ * amount of time has passed since it was last called.
+ *
+ * @param {Function} func - The function to debounce.
+ * @param {number} delay - The number of milliseconds to delay execution.
+ * @return {Function} A debounced version of the input function.
+ */
+export const debounce = (func, delay = 300) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(null, args), delay);
+  };
+};

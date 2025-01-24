@@ -1,5 +1,5 @@
 import { FAVORITES, TRENDING } from './common/constants.js';
-import { q } from './events/helpers.js';
+import { debounce, q } from './events/helpers.js';
 import { loadPage, renderSingleGifView } from './events/navigation-events.js';
 import { renderSearchGifs } from './events/search-events.js';
 import { toggleFavorite } from './events/favorites-events.js';
@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
       renderSearchGifs(inputValue);
     }
   };
+
+  const debouncedHandleSearch = debounce(handleSearch, 300);
 
   document.addEventListener('click', (e) => {
     if (e.target.classList.contains('nav-link')) {
@@ -71,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-      handleSearch();
+      debouncedHandleSearch();
     }
   });
 });
