@@ -12,6 +12,7 @@
     "func-style": "error",
     "semi": 2,
     "no-undef": 2,
+    "camelcase":"off",
     "no-use-before-define": 0,
     "quotes": 2,
     "indent": ["error", 2],

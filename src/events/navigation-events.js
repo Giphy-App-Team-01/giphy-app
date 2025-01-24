@@ -31,7 +31,7 @@ import { getIdsFromUploads } from './user-events.js';
  *   - FAVORITES: Loads the user's favorite GIFs view.
  *   - UPLOAD_GIF: Loads the upload GIF view.
  *   - Any other value will result in no action.
- * @returns {null|void} Returns null if the page is not recognized, otherwise renders the corresponding view.
+ * @return {null|void} Returns null if the page is not recognized, otherwise renders the corresponding view.
  */
 export const loadPage = (page = '') => {
   switch (page) {
@@ -63,10 +63,9 @@ export const loadPage = (page = '') => {
 /**
  * Renders the trending GIFs by fetching data from the API and updating the DOM.
  * If the fetch operation fails, logs an error message to the console.
- * 
  * @async
  * @function renderTrending
- * @returns {Promise<void>} A promise that resolves when the trending GIFs are rendered.
+ * @return {Promise<void>} A promise that resolves when the trending GIFs are rendered.
  */
 const renderTrending = async () => {
   try {
@@ -89,13 +88,13 @@ const renderUploadGif = () => {
 
 /**
  * Renders the view for uploaded GIFs.
- * 
+ *
  * This function retrieves the IDs of uploaded GIFs, fetches the corresponding GIF data,
  * and updates the inner HTML of the container with the uploaded GIFs view.
- * 
+ *
  * @async
  * @function renderUploadedGifsView
- * @returns {Promise<void>} A promise that resolves when the view has been rendered.
+ * @return {Promise<void>} A promise that resolves when the view has been rendered.
  */
 const renderUploadedGifsView = async () => {
   const uploadedIds = getIdsFromUploads();
@@ -105,14 +104,14 @@ const renderUploadedGifsView = async () => {
 
 /**
  * Renders the favorite GIFs.
- * 
+ *
  * This function retrieves the list of favorite GIFs, fetches their data if there are any,
  * and updates the container with the favorite GIFs view. If there are no favorites, it
  * updates the container with an empty favorites view. Finally, it updates the favorite buttons.
- * 
+ *
  * @async
  * @function renderFavorites
- * @returns {Promise<void>} A promise that resolves when the favorites have been rendered.
+ * @return {Promise<void>} A promise that resolves when the favorites have been rendered.
  */
 const renderFavorites = async () => {
   const favorites = getFavorites();
@@ -129,7 +128,7 @@ const renderFavorites = async () => {
  * Renders a single GIF view by fetching the GIF data using the provided ID.
  *
  * @param {string|null} id - The ID of the GIF to fetch. If null, no GIF will be fetched.
- * @returns {Promise<void>} A promise that resolves when the GIF view has been rendered.
+ * @return {Promise<void>} A promise that resolves when the GIF view has been rendered.
  */
 export const renderSingleGifView = async (id = null) => {
   const gifObject = await fetchGifById(id);

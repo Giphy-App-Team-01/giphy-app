@@ -8,7 +8,6 @@ import {
   LIMIT_GIFS,
 } from '../common/config.js';
 import { renderMessageBar } from '../components/message-bar.js';
-import { renderLoader, removeLoader } from '../components/loader.js';
 import { q } from '../events/helpers.js';
 
 /**
