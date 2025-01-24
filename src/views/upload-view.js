@@ -13,7 +13,6 @@ export const toUploadGifView = () => {
     <span class="upload-text">Upload a GIF, MP4, MOV, or WebM.</span>
   </label>
   <input id="gif-file-input" type="file" class="upload-gif-input hidden" accept="image/gif,video/mp4,video/mov,video/quicktime,video/webm,youtube,vimeo" />
-  <div id="preview-container"></div>
 </div>
   `
   );

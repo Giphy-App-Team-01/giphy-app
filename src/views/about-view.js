@@ -6,8 +6,12 @@ export const toAboutUsView = () => {
     <h3 class="text-center mt-15">Meet the legends who made this app possible 🚀</h3>
     <div class="members-container">
       <div class="member-card">
-        <img src="/assets/img/plamen.png" class="avatar__member-card"/>
+        <img src="/assets/img/dimitar.png" class="avatar__member-card"/>
         <div class="title__member-card">Dimitar Srabski</div>
+      </div>
+      <div class="member-card">
+        <img src="/assets/img/plamen.png" class="avatar__member-card"/>
+        <div class="title__member-card">Plamen Yordanov</div>
       </div>
     </div>
   `

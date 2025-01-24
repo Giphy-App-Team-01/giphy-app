@@ -19,13 +19,13 @@ import { q } from '../events/helpers.js';
  */
 export const fetchSearch = async (value) => {
   return await fetchData(
-    `${SEARCH_ENDPOINT}?q=${value}&limit=${LIMIT_GIFS}&api_key=${API_KEY}`,
+    `${SEARCH_ENDPOINT}?q=${value}&limit=${LIMIT_GIFS}&api_key=${API_KEY}`
   );
 };
 
 export const fetchGifByResponseId = async (randomId) => {
   return fetchData(
-    `${GIF_BY_ID_ENDPOINT}?api_key=${API_KEY}&random_id=${randomId}`,
+    `${GIF_BY_ID_ENDPOINT}?api_key=${API_KEY}&random_id=${randomId}`
   );
 };
 
@@ -33,12 +33,12 @@ export const fetchGifByResponseId = async (randomId) => {
  * Fetches trending GIFs from the Giphy API.
  *
  * @async
- * @function fetchTrending
+ * @function fetchTrendingf
  * @return {Promise<Object>} A promise that resolves to the response data from the Giphy API.
  */
 export const fetchTrending = async () => {
   return fetchData(
-    `${TRENDING_ENDPOINT}?api_key=${API_KEY}&limit=${LIMIT_GIFS}`,
+    `${TRENDING_ENDPOINT}?api_key=${API_KEY}&limit=${LIMIT_GIFS}`
   );
 };
 
@@ -67,7 +67,7 @@ export const fetchGifsByIds = async (ids) => {
 
 export const fetchRandomId = async () => {
   const response = await fetchData(
-    `https://api.giphy.com/v1/randomid?api_key=${API_KEY}`,
+    `https://api.giphy.com/v1/randomid?api_key=${API_KEY}`
   );
   return response.data.random_id;
 };
@@ -84,7 +84,6 @@ export const uploadGif = async (file) => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('api_key', API_KEY);
-    // renderLoader();
     const response = await fetch(`${UPLOAD_GIF_ENDPOINT}`, {
       method: 'POST',
       body: formData,
@@ -93,7 +92,6 @@ export const uploadGif = async (file) => {
       throw new Error('Failed to fetch data');
     }
     const data = await response.json();
-    // removeLoader();
     return data;
   } catch (err) {
     renderMessageBar('Failed to upload gif, please try again.', 'error');
@@ -118,7 +116,6 @@ const fetchData = async (url) => {
     const data = await response.json();
     return data;
   } catch (error) {
-
     const uploadLink = q('a.nav-link.active[data-page="my-uploads"]');
 
     if (!uploadLink) {

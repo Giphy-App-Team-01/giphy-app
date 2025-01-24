@@ -27,10 +27,13 @@ export const setActiveNav = (page) => {
   );
 };
 
-/**
- * Extracts the GIF ID from a given GIF string.
- * @returns {string} The extracted GIF ID.
- */
-export const getGifId = (gifString) => {
-  return gifString.split('-')[1];
+// /**
+//  * Extracts the GIF ID from a given GIF string.
+//  * @returns {string} The extracted GIF ID.
+//  */
+// export const getGifId = (gifString) => {
+//   return gifString.split('-')[1];
+// };
+export const copyToClipboard = (data) => {
+  navigator.clipboard.writeText(data);
 };

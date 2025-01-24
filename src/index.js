@@ -3,7 +3,7 @@ import { q } from './events/helpers.js';
 import { loadPage, renderSingleGifView } from './events/navigation-events.js';
 import { renderSearchGifs } from './events/search-events.js';
 import { toggleFavorite } from './events/favorites-events.js';
-import { copyToClipboard } from './events/single-gif-events.js';
+import { handleCopyToClipboard } from './events/single-gif-events.js';
 import { renderMessageBar } from './components/message-bar.js';
 import { handleGifUpload } from './events/upload-gif-events.js';
 import { assignRandomId } from './events/user-events.js';
@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Single view Gif
     if (e.target.classList.contains('gif-item-img')) {
       const gifId = e.target.parentElement.id;
-      console.log(gifId);
       renderSingleGifView(gifId);
     }
 
@@ -61,8 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.target.classList.contains('copy-link__single-gif-view') ||
       e.target.classList.contains('copy-btn')
     ) {
-      const gifUrl = e.target.getAttribute('data-gif-url');
-      copyToClipboard(gifUrl);
+      handleCopyToClipboard(e);
       renderMessageBar('Link copied to clipboard!', 'success');
     }
   });
