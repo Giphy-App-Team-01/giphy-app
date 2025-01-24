@@ -1,3 +1,4 @@
+
 /**
  * Shorthand for document.querySelector
  * @param {string} selector
@@ -27,10 +28,26 @@ export const setActiveNav = (page) => {
   );
 };
 
+
 /**
  * Extracts the GIF ID from a given GIF string.
- * @returns {string} The extracted GIF ID.
+ *
+ * @param {string} gifString - The string containing the GIF ID.
+ * @return {string} The extracted GIF ID.
  */
 export const getGifId = (gifString) => {
   return gifString.split('-')[1];
+};
+
+
+/**
+ * Extracts and validates GIF data from API response.
+ * @param {Object} gifsResponse - The response object from Giphy API.
+ * @return {Array} - Returns an array of GIFs (empty array if no valid data).
+ */
+export const extractGifs = (gifsResponse) => {
+  if (gifsResponse && Array.isArray(gifsResponse.data)) {
+    return gifsResponse.data;
+  }
+  return [];
 };

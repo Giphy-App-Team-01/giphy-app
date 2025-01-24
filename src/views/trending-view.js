@@ -1,6 +1,7 @@
 import { simpleGifView } from '../views/gif-view.js';
 import { renderInfoParagraph } from '../components/info-paragraph.js';
 import { renderPageTitle } from '../components/page-title.js';
+import { extractGifs } from '../events/helpers.js';
 
 /**
  * Generates the HTML for the trending GIFs view.
@@ -10,10 +11,7 @@ import { renderPageTitle } from '../components/page-title.js';
  * @return {string} The HTML string for the trending GIFs view.
  */
 export const toTrendingView = (gifsResponse) => {
-  let gifs = [];
-  if (gifsResponse && Array.isArray(gifsResponse.data)) {
-    gifs = gifsResponse.data;
-  }
+  const gifs = extractGifs(gifsResponse);
 
   if (!Array.isArray(gifs) || gifs.length === 0) {
     return renderInfoParagraph('No trending GIFs available.');

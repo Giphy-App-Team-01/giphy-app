@@ -1,6 +1,7 @@
 import { renderPageTitle } from '../components/page-title.js';
 import { renderInfoParagraph } from '../components/info-paragraph.js';
 import { simpleGifView } from './gif-view.js';
+import { extractGifs } from '../events/helpers.js';
 
 /**
  * Generates the HTML view for uploaded GIFs.
@@ -10,10 +11,7 @@ import { simpleGifView } from './gif-view.js';
  * @return {string} The HTML string representing the uploaded GIFs view.
  */
 export const toUploadedGifsView = (gifsResponse) => {
-  let gifs = [];
-  if (gifsResponse && Array.isArray(gifsResponse.data)) {
-    gifs = gifsResponse.data;
-  }
+  const gifs = extractGifs(gifsResponse);
 
   if (!Array.isArray(gifs) || gifs.length === 0) {
     return renderInfoParagraph('No GIFs uploaded yet. Upload some fun! 😍');
