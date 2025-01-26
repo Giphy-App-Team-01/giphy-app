@@ -60,14 +60,22 @@ document.addEventListener('DOMContentLoaded', () => {
       e.target.classList.contains('copy-link__single-gif-view') ||
       e.target.classList.contains('copy-btn')
     ) {
-      handleCopyToClipboard(e);
-      renderMessageBar('Link copied to clipboard!', 'success');
+      try {
+        handleCopyToClipboard(e);
+        renderMessageBar('Link copied to clipboard!', 'success');
+      } catch (error) {
+        renderMessageBar('Failed to copy link, please try again.', 'error');
+      }
     }
   });
 
   document.addEventListener('input', async (e) => {
     if (e.target.classList.contains('upload-gif-input')) {
-      await handleGifUpload(e.target.files[0]);
+      try {
+        await handleGifUpload(e.target.files[0]);
+      } catch (error) {
+        renderMessageBar('Failed to upload gif, please try again.', 'error');
+      }
     }
   });
 

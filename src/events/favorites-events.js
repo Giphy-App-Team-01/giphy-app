@@ -11,11 +11,11 @@ export const toggleFavorite = (gifId, buttonElement) => {
   let favorites = getFavorites();
   if (favorites.includes(gifId)) {
     favorites = favorites.filter((id) => id !== gifId);
-    buttonElement.textContent = `${EMPTY_HEART_ICON}`;
+    buttonElement.innerHTML = `${EMPTY_HEART_ICON}`;
     renderMessageBar('GIF removed from favorites', 'error');
   } else {
     favorites.push(gifId);
-    buttonElement.textContent = `${FULL_HEART_ICON}`;
+    buttonElement.innerHTML = `${FULL_HEART_ICON}`;
     renderMessageBar('GIF added to favorites', 'success');
   }
 
@@ -33,9 +33,9 @@ export const updateFavoriteButtons = () => {
     const favButton = gif.querySelector('.fav-btn');
 
     if (favorites.includes(gifId)) {
-      favButton.textContent = `${FULL_HEART_ICON}`;
+      favButton.innerHTML = `${FULL_HEART_ICON}`;
     } else {
-      favButton.textContent = `${EMPTY_HEART_ICON}`;
+      favButton.innerHTML = `${EMPTY_HEART_ICON}`;
     }
   });
 };

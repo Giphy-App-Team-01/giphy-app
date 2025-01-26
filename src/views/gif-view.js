@@ -1,7 +1,6 @@
 import { renderFavoriteStatus } from './../events/favorites-events.js';
 import { EMPTY_HEART_ICON, LINK_ICON } from '../common/constants.js';
 
-
 /**
  * Generates the HTML string for a single GIF view.
  *
@@ -37,8 +36,8 @@ export const toSingleGifView = (gifObject) => {
     <div class="gif-details__single-gif-view">
         <span class="title__gif-details">Dimensions</span>
         <span class="value__gif-details">${
-  gifObject.data.images.original.width
-} x ${gifObject.data.images.original.height}</span>
+          gifObject.data.images.original.width
+        } x ${gifObject.data.images.original.height}</span>
     </div>
     <div class="gif-details__single-gif-view">
         <span class="title__gif-details">Upload date</span>
@@ -47,9 +46,9 @@ export const toSingleGifView = (gifObject) => {
     <div class="gif-details__single-gif-view">
         <span class="title__gif-details">Size</span>
         <span class="value__gif-details">${(
-    Number(gifObject.data.images.original.size) /
+          Number(gifObject.data.images.original.size) /
           (1024 * 1024)
-  ).toFixed(2)} MB</span>
+        ).toFixed(2)} MB</span>
     </div>
     <div class="gif-details__single-gif-view">
         <span class="title__gif-details">Rating</span>
@@ -59,19 +58,16 @@ export const toSingleGifView = (gifObject) => {
     </div>
     <div class="main-image__single-gif-view">
         <img src="${gifObject.data.images.original.webp}" alt="${
-  gifObject.data.alt_text
-}" />
+    gifObject.data.alt_text
+  }" />
     </div>
     <div class="controls__single-gif-view">
         <div class="copy-link__single-gif-view" data-gif-url="${
-  gifObject.data.bitly_gif_url
-}">Copy Link</div>
-        <div class="download__single-gif-view"><a href="${
-  gifObject.data.url
-}" download>Download</a></div>
+          gifObject.data.bitly_gif_url
+        }">Copy Link</div>
         <div class="favorites-toggle__single-gif-view" data-gif-id="${
-  gifObject.data.id
-}">${renderFavoriteStatus(gifObject.data.id)}</div>
+          gifObject.data.id
+        }">${renderFavoriteStatus(gifObject.data.id)}</div>
     </div>
   </div>
   `;

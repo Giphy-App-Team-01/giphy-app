@@ -19,3 +19,12 @@ export const GIFS_BY_IDs_ENDPOINT = 'https://api.giphy.com/v1/gifs';
 // Usage: https://upload.giphy.com/v1/gifs?api_key={API_KEY}?file={file}
 export const UPLOAD_GIF_ENDPOINT = 'https://upload.giphy.com/v1/gifs';
 export const LIMIT_GIFS = 24;
+export const ALLOWED_FILE_TYPES_ARRAY = [
+  'image/gif',
+  'video/mp4',
+  'video/mov',
+  'video/quicktime',
+  'video/webm',
+  'youtube',
+  'vimeo',
+];

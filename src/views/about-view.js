@@ -1,5 +1,4 @@
 import { renderPageTitle } from '../components/page-title.js';
-// import '@fontawesome/fontawesome-free/css/all.min.css';
 
 export const toAboutUsView = () => {
   return (
@@ -12,7 +11,6 @@ export const toAboutUsView = () => {
         <div class="title__member-card">Dimitar Srabski</div>
       </div>
       <div class="member-card">
-      <i class="fa-solid fa-magnifying-glass"></i>
         <img src="/assets/img/plamen.png" class="avatar__member-card"/>
         <div class="title__member-card">Plamen Yordanov</div>
       </div>

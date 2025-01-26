@@ -27,7 +27,6 @@ export const setActiveNav = (page) => {
   );
 };
 
-
 /**
  * Extracts the GIF ID from a given GIF string.
  *
@@ -56,7 +55,6 @@ export const extractGifs = (gifsResponse) => {
  * @return {Promise<void>}
  */
 export const copyToClipboard = (text) => navigator.clipboard.writeText(text);
-
 
 /**
  * Debounces a function by delaying its execution until after a specified

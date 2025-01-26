@@ -35,28 +35,28 @@ import { getIdsFromUploads } from './user-events.js';
  */
 export const loadPage = (page = '') => {
   switch (page) {
-  case TRENDING:
-    setActiveNav(TRENDING);
-    return renderTrending();
+    case TRENDING:
+      setActiveNav(TRENDING);
+      return renderTrending();
 
-  case ABOUT:
-    setActiveNav(ABOUT);
-    return renderAboutUsView();
+    case ABOUT:
+      setActiveNav(ABOUT);
+      return renderAboutUsView();
 
-  case MY_UPLOADS:
-    setActiveNav(MY_UPLOADS);
-    return renderUploadedGifsView();
+    case MY_UPLOADS:
+      setActiveNav(MY_UPLOADS);
+      return renderUploadedGifsView();
 
-  case FAVORITES:
-    setActiveNav(FAVORITES);
-    return renderFavorites();
+    case FAVORITES:
+      setActiveNav(FAVORITES);
+      return renderFavorites();
 
-  case UPLOAD_GIF:
-    setActiveNav(UPLOAD_GIF);
-    return renderUploadGif();
+    case UPLOAD_GIF:
+      setActiveNav(UPLOAD_GIF);
+      return renderUploadGif();
 
-  default:
-    return null;
+    default:
+      return null;
   }
 };
 
