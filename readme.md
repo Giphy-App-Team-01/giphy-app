@@ -39,20 +39,11 @@ A simple and interactive Giphy-powered SPA (Single Page Application) that allows
 3. **Run the app locally:**
 
    ```sh
-   npm start
+   Run Live Server extension on index.html
    ```
-
-   or if it’s a purely static app, just open `index.html` in a browser.
 
 4. **Environment Variables (Optional, if required):**
-   Create a `.env` file and set up your Giphy API key:
-
-   ```env
-   VITE_GIPHY_API_KEY=your_api_key_here
-   ```
-
-5. **Deploying the App:**
-   - The app can be deployed on GitHub Pages, Netlify, or Vercel for free static hosting.
+   Add your own Giphy API in /src/common/config.js
 
 ## Contributors
 
